@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:flutter/cupertino.dart';
-import 'package:http/http.dart' as http;
 import 'package:google_fonts/google_fonts.dart';
-import '../../data/data.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class Team_preview extends StatelessWidget {
 
@@ -14,7 +9,7 @@ class Team_preview extends StatelessWidget {
   final List<String> allrounders;
 
 
-  const Team_preview({required this.batsmen,required this.bowlers,required this.allrounders,required this.wicketkeeper});
+  const Team_preview({Key? key, required this.batsmen,required this.bowlers,required this.allrounders,required this.wicketkeeper}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +21,7 @@ class Team_preview extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
         ),
         title: Text('Team Preview',
           style: GoogleFonts.mcLaren(),
@@ -34,8 +29,8 @@ class Team_preview extends StatelessWidget {
         centerTitle: true,
       ),
       body: Container(
-        constraints: BoxConstraints.expand(),
-        decoration: BoxDecoration(
+        constraints: const BoxConstraints.expand(),
+        decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage("images/ground.jpg"),
               fit: BoxFit.cover),
@@ -57,7 +52,7 @@ class Team_preview extends StatelessWidget {
                   ],
                 ),
 
-                SizedBox(height:8),
+                const SizedBox(height:8),
 
                 Text('Batsmen',
                 style: GoogleFonts.mcLaren()),
@@ -69,7 +64,7 @@ class Team_preview extends StatelessWidget {
                 ],
               ),
 
-              SizedBox(height:8),
+              const SizedBox(height:8),
 
               Text('All-rounders',
                   style: GoogleFonts.mcLaren()),
@@ -81,7 +76,7 @@ class Team_preview extends StatelessWidget {
                 ],
               ),
 
-              SizedBox(height:8),
+              const SizedBox(height:8),
 
               Text('Bowlers',
                   style: GoogleFonts.mcLaren()),
@@ -117,7 +112,7 @@ class player_icon extends StatelessWidget {
     return Column(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.all(5),
+          padding: const EdgeInsets.all(5),
           child: CircleAvatar(
             backgroundImage: AssetImage('images/$player_type.jpg'),
             backgroundColor: Colors.white,
@@ -125,7 +120,7 @@ class player_icon extends StatelessWidget {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(3),
+          padding: const EdgeInsets.all(3),
           decoration: BoxDecoration(
             color: Colors.black,
             borderRadius: BorderRadius.circular(5),

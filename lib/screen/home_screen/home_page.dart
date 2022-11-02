@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:win_fantasy11/data/data.dart';
 import 'package:win_fantasy11/screen/login_signup/login_page.dart';
 import '../contests/join_contest/match_contest_page.dart';
 import 'package:google_fonts/google_fonts.dart';

@@ -1,19 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/rendering.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:win_fantasy11/data/data.dart';
-import 'package:win_fantasy11/screen/home_screen/home_screen.dart';
 import 'package:win_fantasy11/screen/saved_teams/saved_team_preview.dart';
 import 'saved_team_view.dart';
 
 class Saved_teams extends StatefulWidget {
   final String match_id;
 
-  Saved_teams({required this.match_id});
+  Saved_teams({Key? key, required this.match_id}) : super(key: key);
 
   @override
   State<Saved_teams> createState() => _Saved_teamsState();
@@ -26,12 +21,12 @@ class _Saved_teamsState extends State<Saved_teams> {
     get_points();
   }
 
-  Match_data match_points = Match_data();
-
+  // Match_data match_points = Match_data();
+  var match_points;
   final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
 
-  CircularProgressIndicator indicator = CircularProgressIndicator(backgroundColor: Colors.grey,color: Colors.blueAccent,strokeWidth: 6,);
+  CircularProgressIndicator indicator = const CircularProgressIndicator(backgroundColor: Colors.grey,color: Colors.blueAccent,strokeWidth: 6,);
 
   Map<String,dynamic> points ={};
 
@@ -45,7 +40,7 @@ class _Saved_teamsState extends State<Saved_teams> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF4C52FF),
+        backgroundColor: const Color(0xFF4C52FF),
         title: Text(
           'My Teams',
           style: GoogleFonts.mcLaren(),
@@ -55,7 +50,7 @@ class _Saved_teamsState extends State<Saved_teams> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
         ),
       ),
       body: Container(
@@ -64,7 +59,7 @@ class _Saved_teamsState extends State<Saved_teams> {
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
-            colors: [Color(0xFF4C52FF),Colors.grey.shade600],
+            colors: [const Color(0xFF4C52FF),Colors.grey.shade600],
           ),
         ),
         child: StreamBuilder<QuerySnapshot>(
@@ -107,7 +102,7 @@ class _Saved_teamsState extends State<Saved_teams> {
                 team_num++;
               }
               return ListView(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 children: teams,
               );
             }
@@ -130,7 +125,7 @@ class Team extends StatefulWidget {
   final List allrounders;
   final List bowlers;
 
-  Team({required this.captain,required this.vice_captain,required this.value,required this.total_points,required this.points,required this.team_num,required this.wicketkeepers,required this.batsmen,required this.allrounders,required this.bowlers});
+  Team({Key? key, required this.captain,required this.vice_captain,required this.value,required this.total_points,required this.points,required this.team_num,required this.wicketkeepers,required this.batsmen,required this.allrounders,required this.bowlers}) : super(key: key);
 
   @override
   State<Team> createState() => _TeamState();
@@ -140,7 +135,7 @@ class _TeamState extends State<Team> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -150,11 +145,11 @@ class _TeamState extends State<Team> {
               color: Colors.grey.withOpacity(0.5), //color of shadow
               spreadRadius: 5, //spread radius
               blurRadius: 7, // blur radius
-              offset: Offset(0, 2), // changes position of shadow
+              offset: const Offset(0, 2), // changes position of shadow
             ),
           ],
         ),
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: InkWell(
           onTap: (){
             Navigator.push(context, MaterialPageRoute(builder:(context)=>team_view(captain: widget.captain,vice_captain: widget.vice_captain,value: widget.value,points: widget.points,total_points: widget.total_points,wicketkeepers:widget.wicketkeepers,batsmen: widget.batsmen,allrounders: widget.allrounders,bowlers: widget.bowlers,)));
@@ -170,7 +165,7 @@ class _TeamState extends State<Team> {
                 onPressed: (){
                   Navigator.push(context, MaterialPageRoute(builder:(context)=>Saved_team_preview(value: widget.value, total_points: widget.total_points, points: widget.points, vice_captain: widget.vice_captain, captain: widget.captain,wicketkeepers:widget.wicketkeepers,batsmen: widget.batsmen,allrounders: widget.allrounders,bowlers: widget.bowlers,)));
                 },
-                icon: Icon(Icons.remove_red_eye),
+                icon: const Icon(Icons.remove_red_eye),
               ),
             ],
           ),

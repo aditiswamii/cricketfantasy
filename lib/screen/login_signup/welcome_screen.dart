@@ -28,10 +28,12 @@ class _Welcome_screenState extends State<Welcome_screen> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
-              child: FlatButton(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                 ),
                 child: Text(
                     'Register',

@@ -6,7 +6,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:win_fantasy11/data/set_data.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -23,8 +22,8 @@ class _ProfileState extends State<Profile> {
   late String name;
   late String phone;
 
-  Set_Data set = Set_Data();
-
+  // Set_Data set = Set_Data();
+ var set ;
   late List user =[];
 
   @override

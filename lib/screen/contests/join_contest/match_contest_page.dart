@@ -1,8 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
-import 'dart:ui';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,7 +6,6 @@ import 'package:win_fantasy11/screen/create_team/create_team.dart';
 import '../../saved_teams/saved_teams.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:win_fantasy11/data/set_data.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'match_contest_screen.dart';
 
@@ -20,7 +15,7 @@ class Match_contest extends StatefulWidget {
   final String team2;
   final String match_id;
   final String start_time;
-  Match_contest({required this.team1,required this.team2,required this.match_id,required this.start_time});
+  Match_contest({Key? key, required this.team1,required this.team2,required this.match_id,required this.start_time}) : super(key: key);
 
   @override
   State<Match_contest> createState() => _Match_contestState();
@@ -33,7 +28,7 @@ class _Match_contestState extends State<Match_contest> {
   late String Match_id = widget.match_id;
   final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
-  late List<bool> _color = List.filled(100, false,growable: true);
+  late final List<bool> _color = List.filled(100, false,growable: true);
 
   late String teams_num='0';
   late List teams_ref= [];
@@ -44,8 +39,8 @@ class _Match_contestState extends State<Match_contest> {
       setState(() {});
   }
 
-  Set_Data set_data = Set_Data();
-
+  // Set_Data set_data = Set_Data();
+  var set_data;
   void showToast(String msg) {
     Fluttertoast.showToast(
         msg: msg,

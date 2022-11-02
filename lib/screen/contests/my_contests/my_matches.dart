@@ -2,9 +2,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'package:win_fantasy11/data/data.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:win_fantasy11/data/set_data.dart';
 import 'my_matches_contests_joined.dart';
 
 class My_contest extends StatefulWidget {
@@ -22,9 +20,11 @@ class _My_contestState extends State<My_contest> {
     update();
   }
 
-  Set_Data data =Set_Data();
-  Match_data match = Match_data();
-  CircularProgressIndicator indicator = CircularProgressIndicator(backgroundColor: Colors.grey,color: Colors.blueAccent,strokeWidth: 6,);
+  // Set_Data data =Set_Data();
+  // Match_data match = Match_data();
+  var data ;
+ var match ;
+  CircularProgressIndicator indicator = const CircularProgressIndicator(backgroundColor: Colors.grey,color: Colors.blueAccent,strokeWidth: 6,);
 
   List contests = [];
   List L = [];

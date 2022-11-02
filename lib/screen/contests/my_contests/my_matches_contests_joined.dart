@@ -1,16 +1,5 @@
-import 'dart:convert';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/painting.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'dart:ui';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:win_fantasy11/data/data.dart';
-import 'package:win_fantasy11/screen/login_signup/login_page.dart';
-import '../join_contest/match_contest_page.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:win_fantasy11/data/set_data.dart';
 import '../join_contest/match_contest_screen.dart';
 
 class My_contest_joined extends StatefulWidget {
@@ -41,8 +30,8 @@ class _My_contest_joinedState extends State<My_contest_joined> {
     setState(() {});
   }
 
-  Set_Data set_data = Set_Data();
-
+  var set_data;
+ // Set_Data set_data = Set_Data();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

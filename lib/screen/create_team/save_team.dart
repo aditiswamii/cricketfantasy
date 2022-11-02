@@ -8,7 +8,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:win_fantasy11/screen/home_screen/home_screen.dart';
 import 'package:win_fantasy11/screen/contests/join_contest/match_contest_page.dart';
-import 'package:win_fantasy11/data/set_data.dart';
 
 class Save_team extends StatefulWidget {
   final List<String> batsmen;
@@ -28,8 +27,8 @@ class Save_team extends StatefulWidget {
 
 class _Save_teamState extends State<Save_team> {
 
-  Set_Data set_data = Set_Data();
-
+  // Set_Data set_data = Set_Data();
+ var set_data ;
   final _firestore = FirebaseFirestore.instance;
 
   late List<String> b = List.filled(widget.batsmen.length, 'bat');
@@ -161,8 +160,13 @@ class _Save_teamState extends State<Save_team> {
       ),
       bottomNavigationBar: Container(
         height: 50,
-        child: FlatButton(
-          color: Colors.red,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.red,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
           onPressed: ()async{
             if(vc_name==''||c_name=='')
             {

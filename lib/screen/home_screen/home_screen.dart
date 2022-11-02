@@ -3,9 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'dart:ui';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:win_fantasy11/data/data.dart';
-import 'package:win_fantasy11/screen/login_signup/login_page.dart';
 import '../contests/join_contest/match_contest_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,8 +14,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-  Match_data match = Match_data();
+ var match ;
+  // Match_data match = Match_data();
   CircularProgressIndicator indicator = CircularProgressIndicator(backgroundColor: Colors.grey,color: Colors.blueAccent,strokeWidth: 6,);
   final _auth = FirebaseAuth.instance;
 

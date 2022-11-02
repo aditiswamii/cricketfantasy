@@ -1,14 +1,7 @@
-import 'dart:io';
-import 'dart:collection';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:win_fantasy11/data/data.dart';
 
 
 class Match_contest_screen extends StatefulWidget {
@@ -18,7 +11,7 @@ class Match_contest_screen extends StatefulWidget {
   final String team1;
   final String team2;
 
-  Match_contest_screen({required this.total_teams,required this.all_teams_ref,required this.match_id,required this.team1,required this.team2});
+  Match_contest_screen({Key? key, required this.total_teams,required this.all_teams_ref,required this.match_id,required this.team1,required this.team2}) : super(key: key);
 
   @override
   State<Match_contest_screen> createState() => _Match_contest_screenState();
@@ -30,9 +23,10 @@ class _Match_contest_screenState extends State<Match_contest_screen> with Ticker
   final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
   late List all_teams_data = [];
-  Match_data match_points = Match_data();
+  // Match_data match_points = Match_data();
+  var match_points;
   Map<String,dynamic> points ={};
-  CircularProgressIndicator indicator = CircularProgressIndicator(backgroundColor: Colors.grey,color: Colors.blueAccent,strokeWidth: 6,);
+  CircularProgressIndicator indicator = const CircularProgressIndicator(backgroundColor: Colors.grey,color: Colors.blueAccent,strokeWidth: 6,);
 
   @override
   void initState() {
@@ -99,7 +93,7 @@ class _Match_contest_screenState extends State<Match_contest_screen> with Ticker
       {
         if(!documentSnapshot.exists)
         {
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         }
         final captain = documentSnapshot['Captain'];
         final vice_captain = documentSnapshot['Vice_Captain'];
@@ -143,15 +137,15 @@ class _Match_contest_screenState extends State<Match_contest_screen> with Ticker
       appBar: AppBar(
         title: Text('${widget.team1} Vs ${widget.team2}',style:GoogleFonts.mcLaren()),
         centerTitle: true,
-        backgroundColor: Color(0xFF4C52FF),
+        backgroundColor: const Color(0xFF4C52FF),
         bottom: TabBar(
           unselectedLabelColor: Colors.black54,
           indicatorColor: Colors.white,
           labelColor: Colors.white,
           labelStyle: GoogleFonts.mcLaren(),
           tabs: [
-            Tab(text: 'Leaderboard'),
-            Tab(text: 'My Teams'),
+            const Tab(text: 'Leaderboard'),
+            const Tab(text: 'My Teams'),
           ],
           controller: tabController,
         ),
@@ -179,7 +173,7 @@ class _Match_contest_screenState extends State<Match_contest_screen> with Ticker
                       title: Text(all_teams_points[index]['Team_Name'],style:GoogleFonts.mcLaren()),
                       trailing: Text(all_teams_points[index]['Points'].toString(),style:GoogleFonts.mcLaren()),
                       leading: Text(same_rank(index).toString(),style: GoogleFonts.mcLaren()),
-                      tileColor: Color(0xFFFDD835),
+                      tileColor: const Color(0xFFFDD835),
                     ),
                   ],
                 );
@@ -188,7 +182,7 @@ class _Match_contest_screenState extends State<Match_contest_screen> with Ticker
                 title: Text(all_teams_points[index]['Team_Name'],style:GoogleFonts.mcLaren()),
                 trailing: Text(all_teams_points[index]['Points'].toString(),style:GoogleFonts.mcLaren()),
                 leading: (all_teams_points[index-1]['Points']==all_teams_points[index]['Points'])?Text(same_rank(index).toString(),style: GoogleFonts.mcLaren()):Text(diff_rank().toString(),style: GoogleFonts.mcLaren()),
-                tileColor: (same_rank(index)==1)?Color(0xFFFDD835):Colors.white,
+                tileColor: (same_rank(index)==1)?const Color(0xFFFDD835):Colors.white,
               );
             },
           ),

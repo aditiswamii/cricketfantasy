@@ -1,8 +1,4 @@
-import 'dart:convert';
-import 'package:flutter/cupertino.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
 
 class Point_system extends StatefulWidget {
@@ -32,14 +28,14 @@ class _Point_systemState extends State<Point_system> with TickerProviderStateMix
       appBar: AppBar(
         title: Text('Points System',style: GoogleFonts.mcLaren()),
         centerTitle: true,
-        backgroundColor: Color(0xFF4C52FF),
+        backgroundColor: const Color(0xFF4C52FF),
 
         bottom: TabBar(
           unselectedLabelColor: Colors.black54,
           indicatorColor: Colors.white,
           labelColor: Colors.white,
           labelStyle: GoogleFonts.mcLaren(),
-          tabs: [
+          tabs: const [
             Tab(text: 'Batting'),
             Tab(text: 'Bowling'),
             Tab(text: 'Fielding'),
@@ -61,13 +57,13 @@ class _Point_systemState extends State<Point_system> with TickerProviderStateMix
                     tileColor: (index%2==0)?Colors.white:Colors.grey,
                      title:Text(batting[index]['Type'],style: GoogleFonts.mcLaren(),),
                      trailing: Container(
-                     padding: EdgeInsets.all(10),
+                     padding: const EdgeInsets.all(10),
                      color: Colors.yellow[700],
                      child: Text(batting[index]['Points'])),
                     ),
-                      SizedBox(height: 5,),
+                      const SizedBox(height: 5,),
                       Container(
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                           child: Text('*NOTE : If a player scores a century only bonus for the century will be awarded, no half century bonus will be awarded.',
                          style: GoogleFonts.mcLaren())),
                     ],
@@ -77,7 +73,7 @@ class _Point_systemState extends State<Point_system> with TickerProviderStateMix
                 tileColor: (index%2==0)?Colors.white:Colors.grey,
                 title:Text(batting[index]['Type'],style: GoogleFonts.mcLaren()),
                 trailing: Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   color: Colors.yellow[700],
                     child: Text(batting[index]['Points'])),
               );
@@ -94,13 +90,13 @@ class _Point_systemState extends State<Point_system> with TickerProviderStateMix
                         tileColor: (index%2==0)?Colors.white:Colors.grey,
                         title:Text(bowling[index]['Type'],style: GoogleFonts.mcLaren(),),
                         trailing: Container(
-                            padding: EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
                             color: Colors.yellow[700],
                             child: Text(bowling[index]['Points'])),
                       ),
-                      SizedBox(height: 5,),
+                      const SizedBox(height: 5,),
                       Container(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           child: Text('*NOTE : If a player takes 5 wickets only bonus for the 5 wicket haul will be awarded, no 3 wicket haul bonus will be awarded.',
                               style: GoogleFonts.mcLaren())),
                     ],
@@ -110,7 +106,7 @@ class _Point_systemState extends State<Point_system> with TickerProviderStateMix
                 tileColor: (index%2==0)?Colors.white:Colors.grey,
                 title:Text(bowling[index]['Type'],style: GoogleFonts.mcLaren()),
                 trailing: Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     color: Colors.yellow[700],
                     child: Text(bowling[index]['Points'])),
               );
@@ -123,7 +119,7 @@ class _Point_systemState extends State<Point_system> with TickerProviderStateMix
                 tileColor: (index%2==0)?Colors.white:Colors.grey,
                 title:Text(fielding[index]['Type'],style: GoogleFonts.mcLaren()),
                 trailing: Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     color: Colors.yellow[700],
                     child: Text(fielding[index]['Points'])),
               );
